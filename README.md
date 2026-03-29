@@ -114,7 +114,7 @@ This collection is my attempt to gather the most important resources I would rec
 
 I am sharing this as a community resource for readers who want a real roadmap. My recommendation is not to treat these books as isolated references, but as a connected curriculum. If someone follows the roadmap below with patience and consistency, they can build a much stronger foundation than what most scattered online courses provide.
 
-**Important note:** this dataset card is best understood as a **curated study guide, reading map, and distilled note layer** over these books. Readers should access each book through legal and appropriate sources. Some titles are openly licensed, while others should be obtained from publishers, libraries, or authorized copies.
+**Important note:** this dataset card is best understood as a **curated study guide, reading map, and my master notes** over these books. Readers should access each book through legal and appropriate sources. Some titles are openly licensed, while others should be obtained from publishers, libraries, or authorized copies.
 
 ---
 
@@ -143,7 +143,7 @@ This collection is for readers who want:
 
 ## Mathematics for Machine Learning
 
-I consider this one of the best entry points for people who want to stop fearing the math behind ML. It bridges the exact mathematical foundations that matter most for machine learning: linear algebra, analytic geometry, matrix decompositions, calculus, optimization, probability, and statistics. It also connects those tools directly to core ML methods such as linear regression, PCA, Gaussian mixture models, and SVMs. This makes it ideal as a “mathematical bridge book” between pure math and real ML. 
+I consider this one of the best entry points for people who want to stop fearing the math behind ML. It bridges the exact mathematical foundations that matter most for machine learning: linear algebra, analytic geometry, matrix decompositions, calculus, optimization, probability, and statistics. It also connects those tools directly to core ML methods such as linear regression, PCA, Gaussian mixture models, and SVMs. This makes it ideal as a "mathematical bridge book" between pure math and real ML. 
 
 ## Foundations of Machine Learning
 
@@ -151,7 +151,7 @@ This is one of the key theory books in the collection. It develops the PAC learn
 
 ## Understanding Machine Learning: From Theory to Algorithms
 
-This book complements *Foundations of Machine Learning* extremely well. It gives a principled account of the ideas behind learning theory, while also focusing on how those principles become algorithms. It covers ERM, convexity, stability, stochastic gradient descent, neural networks, structured output learning, and theoretical ideas like PAC-Bayes and compression-based bounds. I recommend it as one of the best “bridge books” between rigorous theory and algorithmic implementation. 
+This book complements *Foundations of Machine Learning* extremely well. It gives a principled account of the ideas behind learning theory, while also focusing on how those principles become algorithms. It covers ERM, convexity, stability, stochastic gradient descent, neural networks, structured output learning, and theoretical ideas like PAC-Bayes and compression-based bounds. I recommend it as one of the best "bridge books" between rigorous theory and algorithmic implementation. 
 
 ## Pattern Recognition and Machine Learning
 
@@ -159,7 +159,7 @@ This is one of the classic probabilistic ML books. I include it because it build
 
 ## Machine Learning: A Probabilistic Perspective
 
-This is one of the broadest and most comprehensive ML books in the collection. It covers the foundations of machine learning through a unified probabilistic language, bringing together background math, probability, optimization, linear models, latent-variable models, approximate inference, graphical models, kernel methods, and deep learning. I see it as one of the strongest “encyclopedic” references for ML. 
+This is one of the broadest and most comprehensive ML books in the collection. It covers the foundations of machine learning through a unified probabilistic language, bringing together background math, probability, optimization, linear models, latent-variable models, approximate inference, graphical models, kernel methods, and deep learning. I see it as one of the strongest "encyclopedic" references for ML. 
 
 ## Probabilistic Machine Learning: An Introduction
 
@@ -311,20 +311,18 @@ Below I am not trying to rewrite the books in full. I am only extracting the mos
 
 A very large fraction of ML can be written as:
 
-[
-\min_{\theta} ; \frac{1}{n}\sum_{i=1}^{n}\ell\big(f_{\theta}(x_i), y_i\big) + \lambda \Omega(\theta)
-]
+![equation](https://latex.codecogs.com/svg.image?\min_{\theta}\frac{1}{n}\sum_{i=1}^{n}\ell\big(f_{\theta}(x_i),y_i\big)+\lambda\Omega(\theta))
 
 where:
 
-* (f_{\theta}) is the model,
-* (\ell) is the loss function,
-* (\Omega(\theta)) is a regularizer,
-* (\lambda) controls complexity.
+* ![f_theta](https://latex.codecogs.com/svg.image?f_{\theta}) is the model,
+* ![\ell](https://latex.codecogs.com/svg.image?\ell) is the loss function,
+* ![\Omega(\theta)](https://latex.codecogs.com/svg.image?\Omega(\theta)) is a regularizer,
+* ![\lambda](https://latex.codecogs.com/svg.image?\lambda) controls complexity.
 
 This single template unifies linear models, logistic regression, neural networks, transformers, many probabilistic models, and even parts of reinforcement learning through surrogate objectives.
 
-The conceptual lesson is that machine learning is not just “fitting data.” It is **optimizing a tradeoff** between fitting the observed data and controlling model complexity.
+The conceptual lesson is that machine learning is not just "fitting data." It is **optimizing a tradeoff** between fitting the observed data and controlling model complexity.
 
 ---
 
@@ -332,27 +330,19 @@ The conceptual lesson is that machine learning is not just “fitting data.” I
 
 The true objective is not training performance but expected performance on the underlying data distribution:
 
-[
-R(f) = \mathbb{E}_{(x,y)\sim \mathcal{D}}[\ell(f(x),y)]
-]
+![equation](https://latex.codecogs.com/svg.image?R(f)=\mathbb{E}_{(x,y)\sim\mathcal{D}}%5B\ell(f(x),y)%5D)
 
-Since (\mathcal{D}) is unknown, we instead minimize empirical risk:
+Since ![\mathcal{D}](https://latex.codecogs.com/svg.image?\mathcal{D}) is unknown, we instead minimize empirical risk:
 
-[
-\hat{R}*n(f) = \frac{1}{n}\sum*{i=1}^{n}\ell(f(x_i),y_i)
-]
+![equation](https://latex.codecogs.com/svg.image?\hat{R}_n(f)=\frac{1}{n}\sum_{i=1}^{n}\ell(f(x_i),y_i))
 
 and perform ERM:
 
-[
-\hat{f} = \arg\min_{f\in\mathcal{F}} \hat{R}_n(f)
-]
+![equation](https://latex.codecogs.com/svg.image?\hat{f}=\arg\min_{f\in\mathcal{F}}\hat{R}_n(f))
 
 The central question of learning theory is then:
 
-[
-\text{How close is } \hat{R}_n(f) \text{ to } R(f)?
-]
+![equation](https://latex.codecogs.com/svg.image?\text{How%20close%20is%20}\hat{R}_n(f)\text{%20to%20}R(f)?)
 
 This is where PAC learning, VC dimension, stability, margins, and Rademacher complexity become important. The field is not just about fitting; it is about **justified generalization**.  
 
@@ -364,85 +354,53 @@ Probability is the language that ties together Bayesian reasoning, inference, de
 
 Basic probability identities:
 
-[
-P(A \mid B) = \frac{P(B \mid A)P(A)}{P(B)}
-]
+![equation](https://latex.codecogs.com/svg.image?P(A\mid%20B)=\frac{P(B\mid%20A)P(A)}{P(B)})
 
-[
-P(x) = \sum_z P(x,z)
-\quad\text{or}\quad
-p(x)=\int p(x,z),dz
-]
+![equation](https://latex.codecogs.com/svg.image?P(x)=\sum_zP(x,z)\quad\text{or}\quad%20p(x)=\int%20p(x,z)\,dz)
 
-[
-p(x,z)=p(x\mid z)p(z)
-]
+![equation](https://latex.codecogs.com/svg.image?p(x,z)=p(x\mid%20z)p(z))
 
 The most important conceptual objects are:
 
-* **prior**: (p(z))
-* **likelihood**: (p(x\mid z))
-* **posterior**: (p(z\mid x))
-* **evidence / marginal likelihood**: (p(x))
+* **prior**: ![p(z)](https://latex.codecogs.com/svg.image?p(z))
+* **likelihood**: ![p(x|z)](https://latex.codecogs.com/svg.image?p(x\mid%20z))
+* **posterior**: ![p(z|x)](https://latex.codecogs.com/svg.image?p(z\mid%20x))
+* **evidence / marginal likelihood**: ![p(x)](https://latex.codecogs.com/svg.image?p(x))
 
 Bayesian updating then becomes:
 
-[
-p(z\mid x)=\frac{p(x\mid z)p(z)}{p(x)}
-]
+![equation](https://latex.codecogs.com/svg.image?p(z\mid%20x)=\frac{p(x\mid%20z)p(z)}{p(x)})
 
-This pattern appears across PRML, Murphy’s books, MacKay, graphical models, Bayesian neural networks, filtering, and causal inference.    
+This pattern appears across PRML, Murphy's books, MacKay, graphical models, Bayesian neural networks, filtering, and causal inference.    
 
 ---
 
 ## 4. Likelihood, MLE, and MAP
 
-Given data (D={(x_i,y_i)}_{i=1}^{n}), the likelihood is:
+Given data ![D](https://latex.codecogs.com/svg.image?D=\{(x_i,y_i)\}_{i=1}^{n}), the likelihood is:
 
-[
-\mathcal{L}(\theta)=p(D\mid \theta)=\prod_{i=1}^{n}p(y_i\mid x_i,\theta)
-]
+![equation](https://latex.codecogs.com/svg.image?\mathcal{L}(\theta)=p(D\mid\theta)=\prod_{i=1}^{n}p(y_i\mid%20x_i,\theta))
 
 Taking logs:
 
-[
-\log \mathcal{L}(\theta)=\sum_{i=1}^{n}\log p(y_i\mid x_i,\theta)
-]
+![equation](https://latex.codecogs.com/svg.image?\log\mathcal{L}(\theta)=\sum_{i=1}^{n}\log%20p(y_i\mid%20x_i,\theta))
 
 Maximum likelihood estimation is:
 
-[
-\hat{\theta}*{\text{MLE}} = \arg\max*{\theta}\log \mathcal{L}(\theta)
-]
+![equation](https://latex.codecogs.com/svg.image?\hat{\theta}_{\text{MLE}}=\arg\max_{\theta}\log\mathcal{L}(\theta))
 
 Maximum a posteriori estimation adds a prior:
 
-[
-\hat{\theta}_{\text{MAP}}
-=========================
-
-\arg\max_{\theta}
-\left[
-\log p(D\mid \theta)+\log p(\theta)
-\right]
-]
+![equation](https://latex.codecogs.com/svg.image?\hat{\theta}_{\text{MAP}}=\arg\max_{\theta}\left%5B\log%20p(D\mid\theta)+\log%20p(\theta)\right%5D)
 
 Equivalently:
 
-[
-\hat{\theta}_{\text{MAP}}
-=========================
-
-\arg\min_{\theta}
-\left[
--\log p(D\mid \theta) - \log p(\theta)
-\right]
-]
+![equation](https://latex.codecogs.com/svg.image?\hat{\theta}_{\text{MAP}}=\arg\min_{\theta}\left%5B-\log%20p(D\mid\theta)-\log%20p(\theta)\right%5D)
 
 This is the deep bridge between Bayesian reasoning and regularization:
 
-* Gaussian prior (\Rightarrow L_2) regularization
-* Laplace prior (\Rightarrow L_1) regularization
+* Gaussian prior ![L2](https://latex.codecogs.com/svg.image?\Rightarrow%20L_2) regularization
+* Laplace prior ![L1](https://latex.codecogs.com/svg.image?\Rightarrow%20L_1) regularization
 
 ---
 
@@ -450,27 +408,19 @@ This is the deep bridge between Bayesian reasoning and regularization:
 
 The simplest but most important predictive model is:
 
-[
-\hat{y}=w^\top x+b
-]
+![equation](https://latex.codecogs.com/svg.image?\hat{y}=w^\top%20x+b)
 
 with squared loss:
 
-[
-\mathcal{L}(w,b)=\frac{1}{n}\sum_{i=1}^{n}(y_i-w^\top x_i-b)^2
-]
+![equation](https://latex.codecogs.com/svg.image?\mathcal{L}(w,b)=\frac{1}{n}\sum_{i=1}^{n}(y_i-w^\top%20x_i-b)^2)
 
 Closed-form solution:
 
-[
-\hat{w}=(X^\top X)^{-1}X^\top y
-]
+![equation](https://latex.codecogs.com/svg.image?\hat{w}=(X^\top%20X)^{-1}X^\top%20y)
 
 Ridge regression:
 
-[
-\hat{w}=(X^\top X+\lambda I)^{-1}X^\top y
-]
+![equation](https://latex.codecogs.com/svg.image?\hat{w}=(X^\top%20X+\lambda%20I)^{-1}X^\top%20y)
 
 This model matters because it teaches many of the core ideas of the entire field in a clean setting:
 
@@ -487,40 +437,21 @@ This model matters because it teaches many of the core ideas of the entire field
 
 Binary logistic regression models class probabilities using the sigmoid:
 
-[
-P(y=1\mid x)=\sigma(w^\top x+b)
-]
+![equation](https://latex.codecogs.com/svg.image?P(y=1\mid%20x)=\sigma(w^\top%20x+b))
 
-[
-\sigma(z)=\frac{1}{1+e^{-z}}
-]
+![equation](https://latex.codecogs.com/svg.image?\sigma(z)=\frac{1}{1+e^{-z}})
 
 The negative log-likelihood is the binary cross-entropy loss:
 
-[
-\mathcal{L}(w,b)
-================
-
--\sum_{i=1}^{n}
-\left[
-y_i\log \hat{p}_i + (1-y_i)\log(1-\hat{p}_i)
-\right]
-]
+![equation](https://latex.codecogs.com/svg.image?\mathcal{L}(w,b)=-\sum_{i=1}^{n}\left%5By_i\log\hat{p}_i+(1-y_i)\log(1-\hat{p}_i)\right%5D)
 
 Multiclass logistic regression uses softmax:
 
-[
-P(y=k\mid x)=\frac{e^{z_k}}{\sum_j e^{z_j}}
-]
+![equation](https://latex.codecogs.com/svg.image?P(y=k\mid%20x)=\frac{e^{z_k}}{\sum_je^{z_j}})
 
 with loss:
 
-[
-\mathcal{L}
-===========
-
--\sum_{i=1}^{n}\log P(y_i\mid x_i)
-]
+![equation](https://latex.codecogs.com/svg.image?\mathcal{L}=-\sum_{i=1}^{n}\log%20P(y_i\mid%20x_i))
 
 This is one of the most important bridges in all of ML because it connects probability, classification, linear models, gradient-based optimization, and neural network output layers.
 
@@ -530,18 +461,13 @@ This is one of the most important bridges in all of ML because it connects proba
 
 Many widely used distributions can be written as:
 
-[
-p(x\mid \eta)
-=============
-
-h(x)\exp\big(\eta^\top T(x)-A(\eta)\big)
-]
+![equation](https://latex.codecogs.com/svg.image?p(x\mid\eta)=h(x)\exp\big(\eta^\top%20T(x)-A(\eta)\big))
 
 where:
 
-* (T(x)) are sufficient statistics,
-* (\eta) are natural parameters,
-* (A(\eta)) is the log-partition function.
+* ![T(x)](https://latex.codecogs.com/svg.image?T(x)) are sufficient statistics,
+* ![\eta](https://latex.codecogs.com/svg.image?\eta) are natural parameters,
+* ![A(eta)](https://latex.codecogs.com/svg.image?A(\eta)) is the log-partition function.
 
 This family matters because it unifies Bernoulli, Gaussian, Poisson, categorical, and many more. It also lies underneath GLMs, conjugacy, variational inference, message passing, and natural gradients. 
 
@@ -551,27 +477,19 @@ This family matters because it unifies Bernoulli, Gaussian, Poisson, categorical
 
 Entropy:
 
-[
-H(X)=-\sum_x p(x)\log p(x)
-]
+![equation](https://latex.codecogs.com/svg.image?H(X)=-\sum_xp(x)\log%20p(x))
 
 Cross-entropy:
 
-[
-H(p,q)=-\sum_x p(x)\log q(x)
-]
+![equation](https://latex.codecogs.com/svg.image?H(p,q)=-\sum_xp(x)\log%20q(x))
 
 KL divergence:
 
-[
-D_{\mathrm{KL}}(p|q)=\sum_x p(x)\log\frac{p(x)}{q(x)}
-]
+![equation](https://latex.codecogs.com/svg.image?D_{\mathrm{KL}}(p%7Cq)=\sum_xp(x)\log\frac{p(x)}{q(x)})
 
 Mutual information:
 
-[
-I(X;Y)=\sum_{x,y}p(x,y)\log\frac{p(x,y)}{p(x)p(y)}
-]
+![equation](https://latex.codecogs.com/svg.image?I(X;Y)=\sum_{x,y}p(x,y)\log\frac{p(x,y)}{p(x)p(y)})
 
 These ideas are not peripheral. They are central across the books:
 
@@ -587,12 +505,7 @@ These ideas are not peripheral. They are central across the books:
 
 In a simplified regression view:
 
-[
-\mathbb{E}\big[(y-\hat{f}(x))^2\big]
-====================================
-
-\text{Bias}^2+\text{Variance}+\text{Noise}
-]
+![equation](https://latex.codecogs.com/svg.image?\mathbb{E}\big%5B(y-\hat{f}(x))^2\big%5D=\text{Bias}^2+\text{Variance}+\text{Noise})
 
 This gives one of the most important conceptual lessons in ML:
 
@@ -608,53 +521,31 @@ This pattern reappears in linear models, trees, kernels, ensembles, and deep neu
 
 A differentiable function is convex if:
 
-[
-f(\theta x+(1-\theta)y)
-\le
-\theta f(x)+(1-\theta)f(y)
-\quad\forall \theta\in[0,1]
-]
+![equation](https://latex.codecogs.com/svg.image?f(\theta%20x+(1-\theta)y)\leq\theta%20f(x)+(1-\theta)f(y)\quad\forall\theta\in%5B0,1%5D)
 
 For convex differentiable functions:
 
-[
-f(y)\ge f(x)+\nabla f(x)^\top (y-x)
-]
+![equation](https://latex.codecogs.com/svg.image?f(y)\geq%20f(x)+\nabla%20f(x)^\top(y-x))
 
 Convexity matters because local minima are global minima, optimization is more stable, and duality becomes powerful.
 
 For constrained optimization:
 
-[
-\min_x f(x)
-\quad
-\text{s.t. } g_i(x)\le 0,; h_j(x)=0
-]
+![equation](https://latex.codecogs.com/svg.image?\min_xf(x)\quad\text{s.t.%20}g_i(x)\leq0,\;h_j(x)=0)
 
 the Lagrangian is:
 
-[
-\mathcal{L}(x,\lambda,\nu)=
-f(x)+\sum_i \lambda_i g_i(x)+\sum_j \nu_j h_j(x)
-]
+![equation](https://latex.codecogs.com/svg.image?\mathcal{L}(x,\lambda,\nu)=f(x)+\sum_i\lambda_ig_i(x)+\sum_j\nu_jh_j(x))
 
 and KKT conditions become fundamental:
 
-[
-g_i(x^\star)\le 0,\quad h_j(x^\star)=0
-]
+![equation](https://latex.codecogs.com/svg.image?g_i(x^\star)\leq0,\quad%20h_j(x^\star)=0)
 
-[
-\lambda_i^\star \ge 0
-]
+![equation](https://latex.codecogs.com/svg.image?\lambda_i^\star\geq0)
 
-[
-\lambda_i^\star g_i(x^\star)=0
-]
+![equation](https://latex.codecogs.com/svg.image?\lambda_i^\star%20g_i(x^\star)=0)
 
-[
-\nabla_x \mathcal{L}(x^\star,\lambda^\star,\nu^\star)=0
-]
+![equation](https://latex.codecogs.com/svg.image?\nabla_x\mathcal{L}(x^\star,\lambda^\star,\nu^\star)=0)
 
 These ideas sit underneath SVMs, constrained estimation, dual optimization, and many optimization-based ML methods.  
 
@@ -664,46 +555,25 @@ These ideas sit underneath SVMs, constrained estimation, dual optimization, and 
 
 Standard gradient descent:
 
-[
-\theta_{t+1}=\theta_t-\eta \nabla_\theta \mathcal{L}(\theta_t)
-]
+![equation](https://latex.codecogs.com/svg.image?\theta_{t+1}=\theta_t-\eta\nabla_\theta\mathcal{L}(\theta_t))
 
 Mini-batch stochastic gradient descent:
 
-[
-\theta_{t+1}
-============
-
-\theta_t-\eta \nabla_\theta \mathcal{L}_{\mathcal{B}_t}(\theta_t)
-]
+![equation](https://latex.codecogs.com/svg.image?\theta_{t+1}=\theta_t-\eta\nabla_\theta\mathcal{L}_{\mathcal{B}_t}(\theta_t))
 
 Momentum:
 
-[
-v_{t+1}=\beta v_t+\nabla_\theta \mathcal{L}(\theta_t),
-\qquad
-\theta_{t+1}=\theta_t-\eta v_{t+1}
-]
+![equation](https://latex.codecogs.com/svg.image?v_{t+1}=\beta%20v_t+\nabla_\theta\mathcal{L}(\theta_t),\qquad\theta_{t+1}=\theta_t-\eta%20v_{t+1})
 
 Adam:
 
-[
-m_t=\beta_1 m_{t-1}+(1-\beta_1)g_t
-]
+![equation](https://latex.codecogs.com/svg.image?m_t=\beta_1m_{t-1}+(1-\beta_1)g_t)
 
-[
-v_t=\beta_2 v_{t-1}+(1-\beta_2)g_t^2
-]
+![equation](https://latex.codecogs.com/svg.image?v_t=\beta_2v_{t-1}+(1-\beta_2)g_t^2)
 
-[
-\hat{m}_t=\frac{m_t}{1-\beta_1^t},
-\qquad
-\hat{v}_t=\frac{v_t}{1-\beta_2^t}
-]
+![equation](https://latex.codecogs.com/svg.image?\hat{m}_t=\frac{m_t}{1-\beta_1^t},\qquad\hat{v}_t=\frac{v_t}{1-\beta_2^t})
 
-[
-\theta_t=\theta_{t-1}-\eta \frac{\hat{m}_t}{\sqrt{\hat{v}_t}+\epsilon}
-]
+![equation](https://latex.codecogs.com/svg.image?\theta_t=\theta_{t-1}-\eta\frac{\hat{m}_t}{\sqrt{\hat{v}_t}+\epsilon})
 
 These are the workhorse update rules behind modern deep learning and a large fraction of practical ML.   
 
@@ -713,44 +583,23 @@ These are the workhorse update rules behind modern deep learning and a large fra
 
 A feedforward neural network composes affine maps and nonlinearities:
 
-[
-h^{(1)}=\phi(W^{(1)}x+b^{(1)})
-]
+![equation](https://latex.codecogs.com/svg.image?h^{(1)}=\phi(W^{(1)}x+b^{(1)}))
 
-[
-h^{(l)}=\phi(W^{(l)}h^{(l-1)}+b^{(l)})
-]
+![equation](https://latex.codecogs.com/svg.image?h^{(l)}=\phi(W^{(l)}h^{(l-1)}+b^{(l)}))
 
-[
-\hat{y}=W^{(L)}h^{(L-1)}+b^{(L)}
-]
+![equation](https://latex.codecogs.com/svg.image?\hat{y}=W^{(L)}h^{(L-1)}+b^{(L)})
 
-The real power of deep learning is not just “many parameters.” It is **hierarchical representation learning** through compositional structure.
+The real power of deep learning is not just "many parameters." It is **hierarchical representation learning** through compositional structure.
 
 Backpropagation is the chain rule applied efficiently across this composition:
 
-[
-\frac{\partial \mathcal{L}}{\partial x}
-=======================================
+![equation](https://latex.codecogs.com/svg.image?\frac{\partial\mathcal{L}}{\partial%20x}=\frac{\partial\mathcal{L}}{\partial%20f}\frac{\partial%20f}{\partial%20g}\frac{\partial%20g}{\partial%20h}\frac{\partial%20h}{\partial%20x})
 
-\frac{\partial \mathcal{L}}{\partial f}
-\frac{\partial f}{\partial g}
-\frac{\partial g}{\partial h}
-\frac{\partial h}{\partial x}
-]
+For a dense layer ![z=Wx+b](https://latex.codecogs.com/svg.image?z=Wx+b), ![a=phi(z)](https://latex.codecogs.com/svg.image?a=\phi(z)):
 
-For a dense layer (z=Wx+b), (a=\phi(z)):
+![equation](https://latex.codecogs.com/svg.image?\frac{\partial\mathcal{L}}{\partial%20W}=\delta%20x^\top)
 
-[
-\frac{\partial \mathcal{L}}{\partial W}=\delta x^\top
-]
-
-[
-\delta=\frac{\partial \mathcal{L}}{\partial z}
-==============================================
-
-\frac{\partial \mathcal{L}}{\partial a}\odot \phi'(z)
-]
+![equation](https://latex.codecogs.com/svg.image?\delta=\frac{\partial\mathcal{L}}{\partial%20z}=\frac{\partial\mathcal{L}}{\partial%20a}\odot\phi'(z))
 
 ---
 
@@ -760,15 +609,11 @@ Deep networks are sensitive to activation and gradient scales. Good initializati
 
 Xavier / Glorot initialization:
 
-[
-\mathrm{Var}(W)\approx \frac{2}{n_{\text{in}}+n_{\text{out}}}
-]
+![equation](https://latex.codecogs.com/svg.image?\mathrm{Var}(W)\approx\frac{2}{n_{\text{in}}+n_{\text{out}}})
 
 He initialization:
 
-[
-\mathrm{Var}(W)\approx \frac{2}{n_{\text{in}}}
-]
+![equation](https://latex.codecogs.com/svg.image?\mathrm{Var}(W)\approx\frac{2}{n_{\text{in}}})
 
 This matters because training failure often comes not from the optimizer alone, but from bad signal propagation through depth. That is one reason the theory books on deep learning pay so much attention to initialization, criticality, and scaling.  
 
@@ -776,40 +621,21 @@ This matters because training failure often comes not from the optimizer alone, 
 
 ## 14. Variational inference and the ELBO
 
-When exact posterior inference is intractable, variational inference approximates it with a tractable family (q(z)).
+When exact posterior inference is intractable, variational inference approximates it with a tractable family ![q(z)](https://latex.codecogs.com/svg.image?q(z)).
 
 The key identity is:
 
-[
-\log p(x)
-=========
-
-\mathcal{L}(q)
-+
-D_{\mathrm{KL}}\big(q(z)|p(z\mid x)\big)
-]
+![equation](https://latex.codecogs.com/svg.image?\log%20p(x)=\mathcal{L}(q)+D_{\mathrm{KL}}\big(q(z)%7Cp(z\mid%20x)\big))
 
 where the evidence lower bound is:
 
-[
-\mathcal{L}(q)
-==============
-
-\mathbb{E}_{q(z)}[\log p(x,z)-\log q(z)]
-]
+![equation](https://latex.codecogs.com/svg.image?\mathcal{L}(q)=\mathbb{E}_{q(z)}%5B\log%20p(x,z)-\log%20q(z)%5D)
 
 Equivalently:
 
-[
-\mathcal{L}(q)
-==============
+![equation](https://latex.codecogs.com/svg.image?\mathcal{L}(q)=\mathbb{E}_{q(z)}%5B\log%20p(x\mid%20z)%5D-D_{\mathrm{KL}}(q(z)%7Cp(z)))
 
-## \mathbb{E}_{q(z)}[\log p(x\mid z)]
-
-D_{\mathrm{KL}}(q(z)|p(z))
-]
-
-Since KL is nonnegative, maximizing the ELBO makes (q(z)) closer to the true posterior.
+Since KL is nonnegative, maximizing the ELBO makes ![q(z)](https://latex.codecogs.com/svg.image?q(z)) closer to the true posterior.
 
 This one framework powers:
 
@@ -825,11 +651,9 @@ This one framework powers:
 
 A Gaussian process defines a distribution over functions:
 
-[
-f \sim \mathcal{GP}(m(x), k(x,x'))
-]
+![equation](https://latex.codecogs.com/svg.image?f\sim\mathcal{GP}(m(x),k(x,x')))
 
-where (m(x)) is the mean function and (k(x,x')) is the kernel.
+where ![m(x)](https://latex.codecogs.com/svg.image?m(x)) is the mean function and ![k(x,x')](https://latex.codecogs.com/svg.image?k(x,x')) is the kernel.
 
 The conceptual leap here is powerful: instead of putting uncertainty over parameters, I can put uncertainty directly over functions.
 
@@ -846,18 +670,11 @@ Gaussian processes matter because they teach:
 
 In Bayesian neural networks, I put a posterior over parameters:
 
-[
-p(\theta\mid \mathcal{D})
-]
+![equation](https://latex.codecogs.com/svg.image?p(\theta\mid\mathcal{D}))
 
 and then predictive uncertainty becomes:
 
-[
-p(y_\ast\mid x_\ast,\mathcal{D})
-================================
-
-\int p(y_\ast\mid x_\ast,\theta),p(\theta\mid \mathcal{D}),d\theta
-]
+![equation](https://latex.codecogs.com/svg.image?p(y_\ast\mid%20x_\ast,\mathcal{D})=\int%20p(y_\ast\mid%20x_\ast,\theta)\,p(\theta\mid\mathcal{D})\,d\theta)
 
 This is one of the cleanest ways to represent epistemic uncertainty in neural prediction. Approximation strategies include VI, Laplace approximations, MCMC, dropout-based approximations, and deep ensembles. 
 
@@ -867,27 +684,15 @@ This is one of the cleanest ways to represent epistemic uncertainty in neural pr
 
 The core transformer mechanism is scaled dot-product attention:
 
-[
-\mathrm{Attention}(Q,K,V)
-=========================
-
-\mathrm{softmax}\left(\frac{QK^\top}{\sqrt{d_k}}\right)V
-]
+![equation](https://latex.codecogs.com/svg.image?\mathrm{Attention}(Q,K,V)=\mathrm{softmax}\!\left(\frac{QK^\top}{\sqrt{d_k}}\right)V)
 
 Self-attention uses:
 
-[
-Q=XW^Q,\qquad K=XW^K,\qquad V=XW^V
-]
+![equation](https://latex.codecogs.com/svg.image?Q=XW^Q,\qquad%20K=XW^K,\qquad%20V=XW^V)
 
 Multi-head attention computes several attention maps in parallel:
 
-[
-\mathrm{MHA}(Q,K,V)
-===================
-
-\mathrm{Concat}(\text{head}_1,\dots,\text{head}_H)W^O
-]
+![equation](https://latex.codecogs.com/svg.image?\mathrm{MHA}(Q,K,V)=\mathrm{Concat}(\text{head}_1,\dots,\text{head}_H)W^O)
 
 The key conceptual lesson is that attention lets a model dynamically route information based on relevance rather than fixed local structure. This is one reason transformers generalized so strongly across text, vision, and multimodal systems.  
 
@@ -897,29 +702,15 @@ The key conceptual lesson is that attention lets a model dynamically route infor
 
 Autoregressive language modeling factors a sequence as:
 
-[
-P(x_{1:T})=\prod_{t=1}^{T}P(x_t\mid x_{<t})
-]
+![equation](https://latex.codecogs.com/svg.image?P(x_{1:T})=\prod_{t=1}^{T}P(x_t\mid%20x_{%3Ct}))
 
 Training objective:
 
-[
-\mathcal{L}_{\text{LM}}
-=======================
-
--\sum_{t=1}^{T}\log P_\theta(x_t\mid x_{<t})
-]
+![equation](https://latex.codecogs.com/svg.image?\mathcal{L}_{\text{LM}}=-\sum_{t=1}^{T}\log%20P_\theta(x_t\mid%20x_{%3Ct}))
 
 Perplexity:
 
-[
-\mathrm{PPL}
-============
-
-\exp\left(
--\frac{1}{T}\sum_{t=1}^{T}\log P_\theta(x_t\mid x_{<t})
-\right)
-]
+![equation](https://latex.codecogs.com/svg.image?\mathrm{PPL}=\exp\!\left(-\frac{1}{T}\sum_{t=1}^{T}\log%20P_\theta(x_t\mid%20x_{%3Ct})\right))
 
 This is the master probabilistic formulation behind GPT-style pretraining. LLMs are best understood as large autoregressive probabilistic sequence models trained at scale.  
 
@@ -929,29 +720,13 @@ This is the master probabilistic formulation behind GPT-style pretraining. LLMs 
 
 Supervised fine-tuning objective:
 
-[
-\mathcal{L}_{\text{SFT}}
-========================
-
--\sum_{(x,y)}\log P_\theta(y\mid x)
-]
+![equation](https://latex.codecogs.com/svg.image?\mathcal{L}_{\text{SFT}}=-\sum_{(x,y)}\log%20P_\theta(y\mid%20x))
 
 Knowledge distillation:
 
-[
-\mathcal{L}_{\text{KD}}
-=======================
+![equation](https://latex.codecogs.com/svg.image?\mathcal{L}_{\text{KD}}=(1-\alpha)\mathcal{L}_{\text{hard}}+\alpha%20T^2%20D_{\mathrm{KL}}\!\left(p_T^{\text{teacher}}%7C%7Cp_T^{\text{student}}\right))
 
-(1-\alpha)\mathcal{L}*{\text{hard}}
-+
-\alpha T^2
-D*{\mathrm{KL}}
-\left(
-p_T^{\text{teacher}} ,|, p_T^{\text{student}}
-\right)
-]
-
-The conceptual point is that a student model can learn not only ground-truth labels but also the teacher’s richer soft distribution over outputs.
+The conceptual point is that a student model can learn not only ground-truth labels but also the teacher's richer soft distribution over outputs.
 
 ---
 
@@ -959,13 +734,9 @@ The conceptual point is that a student model can learn not only ground-truth lab
 
 In a simplified RAG pipeline:
 
-[
-d^\star = \arg\max_{d\in\mathcal{D}} \mathrm{sim}(q,d)
-]
+![equation](https://latex.codecogs.com/svg.image?d^\star=\arg\max_{d\in\mathcal{D}}\mathrm{sim}(q,d))
 
-[
-P(y\mid q)\approx P(y\mid q,d^\star)
-]
+![equation](https://latex.codecogs.com/svg.image?P(y\mid%20q)\approx%20P(y\mid%20q,d^\star))
 
 This shows the core architecture idea:
 
@@ -980,42 +751,27 @@ Modern LLM systems often perform best when both are combined. That is why AI eng
 
 A Markov decision process is:
 
-[
-(\mathcal{S}, \mathcal{A}, P, R, \gamma)
-]
+![equation](https://latex.codecogs.com/svg.image?(\mathcal{S},\mathcal{A},P,R,\gamma))
 
 Return:
 
-[
-G_t=\sum_{k=0}^{\infty}\gamma^k R_{t+k+1}
-]
+![equation](https://latex.codecogs.com/svg.image?G_t=\sum_{k=0}^{\infty}\gamma^k%20R_{t+k+1})
 
 State-value function:
 
-[
-V^\pi(s)=\mathbb{E}_\pi[G_t\mid S_t=s]
-]
+![equation](https://latex.codecogs.com/svg.image?V^\pi(s)=\mathbb{E}_\pi%5BG_t\mid%20S_t=s%5D)
 
 Action-value function:
 
-[
-Q^\pi(s,a)=\mathbb{E}_\pi[G_t\mid S_t=s,A_t=a]
-]
+![equation](https://latex.codecogs.com/svg.image?Q^\pi(s,a)=\mathbb{E}_\pi%5BG_t\mid%20S_t=s,A_t=a%5D)
 
 Bellman expectation equation:
 
-[
-V^\pi(s)=
-\sum_a \pi(a\mid s)\sum_{s',r}p(s',r\mid s,a)\big[r+\gamma V^\pi(s')\big]
-]
+![equation](https://latex.codecogs.com/svg.image?V^\pi(s)=\sum_a\pi(a\mid%20s)\sum_{s',r}p(s',r\mid%20s,a)\big%5Br+\gamma%20V^\pi(s')\big%5D)
 
 Bellman optimality equation:
 
-[
-V^\star(s)=
-\max_a
-\sum_{s',r}p(s',r\mid s,a)\big[r+\gamma V^\star(s')\big]
-]
+![equation](https://latex.codecogs.com/svg.image?V^\star(s)=\max_a\sum_{s',r}p(s',r\mid%20s,a)\big%5Br+\gamma%20V^\star(s')\big%5D)
 
 These equations form the mathematical backbone of RL and sequential decision making.  
 
@@ -1025,32 +781,19 @@ These equations form the mathematical backbone of RL and sequential decision mak
 
 TD value update:
 
-[
-V(S_t)\leftarrow V(S_t)+\alpha\Big(R_{t+1}+\gamma V(S_{t+1})-V(S_t)\Big)
-]
+![equation](https://latex.codecogs.com/svg.image?V(S_t)\leftarrow%20V(S_t)+\alpha\Big(R_{t+1}+\gamma%20V(S_{t+1})-V(S_t)\Big))
 
 Q-learning:
 
-[
-Q(S_t,A_t)\leftarrow Q(S_t,A_t)+\alpha\Big(R_{t+1}+\gamma \max_a Q(S_{t+1},a)-Q(S_t,A_t)\Big)
-]
+![equation](https://latex.codecogs.com/svg.image?Q(S_t,A_t)\leftarrow%20Q(S_t,A_t)+\alpha\Big(R_{t+1}+\gamma\max_aQ(S_{t+1},a)-Q(S_t,A_t)\Big))
 
 Policy gradient objective:
 
-[
-J(\theta)=\mathbb{E}*{\tau\sim \pi*\theta}[R(\tau)]
-]
+![equation](https://latex.codecogs.com/svg.image?J(\theta)=\mathbb{E}_{\tau\sim\pi_\theta}%5BR(\tau)%5D)
 
 REINFORCE gradient:
 
-[
-\nabla_\theta J(\theta)
-=======================
-
-\mathbb{E}\left[
-\sum_t \nabla_\theta \log \pi_\theta(a_t\mid s_t),G_t
-\right]
-]
+![equation](https://latex.codecogs.com/svg.image?\nabla_\theta%20J(\theta)=\mathbb{E}\!\left%5B\sum_t\nabla_\theta\log\pi_\theta(a_t\mid%20s_t)\,G_t\right%5D)
 
 These formulas explain the main split in RL:
 
@@ -1066,13 +809,7 @@ In bandits and RL, the system must balance using what it knows and discovering w
 
 One canonical exploration rule is UCB:
 
-[
-A_t=
-\arg\max_a
-\left[
-\hat{Q}_t(a)+c\sqrt{\frac{\ln t}{N_t(a)}}
-\right]
-]
+![equation](https://latex.codecogs.com/svg.image?A_t=\arg\max_a\left%5B\hat{Q}_t(a)+c\sqrt{\frac{\ln%20t}{N_t(a)}}\right%5D)
 
 This captures a deep principle: act according to both current value estimate and uncertainty bonus.
 
@@ -1086,15 +823,11 @@ Prediction is not enough; action depends on utility.
 
 Expected utility principle:
 
-[
-a^\star=\arg\max_a \mathbb{E}[U\mid a]
-]
+![equation](https://latex.codecogs.com/svg.image?a^\star=\arg\max_a\mathbb{E}%5BU\mid%20a%5D)
 
 or equivalently with losses:
 
-[
-a^\star=\arg\min_a \mathbb{E}[L(a,\theta)\mid x]
-]
+![equation](https://latex.codecogs.com/svg.image?a^\star=\arg\min_a\mathbb{E}%5BL(a,\theta)\mid%20x%5D)
 
 This is one of the deepest ideas in the collection. Many practical systems fail because they optimize prediction accuracy without explicitly reasoning about utility, cost, risk, and downstream decisions.  
 
@@ -1106,18 +839,7 @@ One of the most important advanced lessons in modern ML is that train and test d
 
 Under covariate shift:
 
-[
-R(f)
-====
-
-# \mathbb{E}*{(x,y)\sim p*{\text{test}}}[\ell(f(x),y)]
-
-\mathbb{E}*{(x,y)\sim p*{\text{train}}}
-\left[
-\frac{p_{\text{test}}(x)}{p_{\text{train}}(x)}
-\ell(f(x),y)
-\right]
-]
+![equation](https://latex.codecogs.com/svg.image?R(f)=\mathbb{E}_{(x,y)\sim%20p_{\text{test}}}%5B\ell(f(x),y)%5D=\mathbb{E}_{(x,y)\sim%20p_{\text{train}}}\!\left%5B\frac{p_{\text{test}}(x)}{p_{\text{train}}(x)}\ell(f(x),y)\right%5D)
 
 This leads to reweighting strategies, adaptation, and robust training ideas.
 
@@ -1138,41 +860,25 @@ Modern generative AI can be seen through several major families:
 
 ### Variational autoencoders
 
-[
-\mathcal{L}_{\text{VAE}}
-========================
-
-## \mathbb{E}*{q*\phi(z\mid x)}[\log p_\theta(x\mid z)]
-
-D_{\mathrm{KL}}(q_\phi(z\mid x)|p(z))
-]
+![equation](https://latex.codecogs.com/svg.image?\mathcal{L}_{\text{VAE}}=\mathbb{E}_{q_\phi(z\mid%20x)}%5B\log%20p_\theta(x\mid%20z)%5D-D_{\mathrm{KL}}(q_\phi(z\mid%20x)%7Cp(z)))
 
 ### Autoregressive models
 
-[
-p(x_{1:T})=\prod_{t=1}^{T}p(x_t\mid x_{<t})
-]
+![equation](https://latex.codecogs.com/svg.image?p(x_{1:T})=\prod_{t=1}^{T}p(x_t\mid%20x_{%3Ct}))
 
 ### Normalizing flows
 
-[
-p_X(x)=p_Z(f(x))
-\left|
-\det \frac{\partial f(x)}{\partial x}
-\right|
-]
+![equation](https://latex.codecogs.com/svg.image?p_X(x)=p_Z(f(x))\left|\det\frac{\partial%20f(x)}{\partial%20x}\right|)
 
 ### Diffusion models
 
 Forward corruption:
-[
-q(x_t\mid x_{t-1})
-]
+
+![equation](https://latex.codecogs.com/svg.image?q(x_t\mid%20x_{t-1}))
 
 Learned reverse denoising:
-[
-p_\theta(x_{t-1}\mid x_t)
-]
+
+![equation](https://latex.codecogs.com/svg.image?p_\theta(x_{t-1}\mid%20x_t))
 
 ### GANs
 
@@ -1184,7 +890,7 @@ The key lesson is that generative modeling is not one technique. It is an ecosys
 
 ## 27. Representation learning
 
-Representation learning is about learning (z=f_\theta(x)) such that useful structure is preserved and nuisance variation is compressed.
+Representation learning is about learning ![z=f_theta(x)](https://latex.codecogs.com/svg.image?z=f_\theta(x)) such that useful structure is preserved and nuisance variation is compressed.
 
 This can be done through:
 
@@ -1204,16 +910,9 @@ Robust system evaluation requires more than aggregate accuracy.
 
 For rare failure estimation, importance sampling plays a key role:
 
-[
-\hat{p}
-=======
+![equation](https://latex.codecogs.com/svg.image?\hat{p}=\frac{1}{n}\sum_{i=1}^{n}\mathbf{1}%5Bx_i\in\mathcal{F}%5D\frac{p(x_i)}{q(x_i)})
 
-\frac{1}{n}\sum_{i=1}^{n}
-\mathbf{1}{x_i\in \mathcal{F}}
-\frac{p(x_i)}{q(x_i)}
-]
-
-where (\mathcal{F}) is the failure set.
+where ![F](https://latex.codecogs.com/svg.image?\mathcal{F}) is the failure set.
 
 The larger lesson is that trustworthy AI must account for:
 
@@ -1232,21 +931,15 @@ Three central statistical fairness notions are:
 
 ### Independence
 
-[
-\hat{Y}\perp A
-]
+![equation](https://latex.codecogs.com/svg.image?\hat{Y}\perp%20A)
 
 ### Separation
 
-[
-\hat{Y}\perp A \mid Y
-]
+![equation](https://latex.codecogs.com/svg.image?\hat{Y}\perp%20A\mid%20Y)
 
 ### Sufficiency
 
-[
-Y\perp A \mid \hat{Y}
-]
+![equation](https://latex.codecogs.com/svg.image?Y\perp%20A\mid\hat{Y})
 
 A major lesson from the fairness literature is that these criteria are generally **not simultaneously satisfiable** except under special conditions. That means fairness is not just a matter of choosing one formula; it requires thinking carefully about goals, institutions, social context, and the limits of observational criteria. 
 
@@ -1258,18 +951,11 @@ Causal reasoning asks not only what is associated, but what would happen under i
 
 The intervention notation is:
 
-[
-p(y\mid do(x))
-]
+![equation](https://latex.codecogs.com/svg.image?p(y\mid%20do(x)))
 
 When backdoor adjustment is valid:
 
-[
-p(y\mid do(x))
-==============
-
-\sum_z p(y\mid x,z)p(z)
-]
+![equation](https://latex.codecogs.com/svg.image?p(y\mid%20do(x))=\sum_zp(y\mid%20x,z)p(z))
 
 Causality matters because prediction alone cannot answer interventional questions, policy questions, or many scientific questions. This is one of the most important distinctions between pattern recognition and genuine decision-support intelligence. 
 
