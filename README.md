@@ -114,8 +114,6 @@ This collection is my attempt to gather the most important resources I would rec
 
 I am sharing this as a community resource for readers who want a real roadmap. My recommendation is not to treat these books as isolated references, but as a connected curriculum. If someone follows the roadmap below with patience and consistency, they can build a much stronger foundation than what most scattered online courses provide.
 
-**Important note:** this dataset card is best understood as a **curated study guide, reading map, and my master notes** over these books. Readers should access each book through legal and appropriate sources. Some titles are openly licensed, while others should be obtained from publishers, libraries, or authorized copies.
-
 ---
 
 ## Why this collection exists
