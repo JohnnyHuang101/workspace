@@ -1,34 +1,39 @@
-from typing import Dict, Any, List, TypedDict , Optional
+from typing import Dict, Any, List, TypedDict, Optional, Annotated
+import operator
+
 
 class NormalizedListing(TypedDict):
-
-    title: str 
-    price: float 
-    currency: str 
+    title: str
+    description: str  # LLM-cleaned summary (falls back to raw bullets)
+    raw_bullets: List[str]  # verbatim feature bullets, no invention
+    price: Optional[float]
+    price_raw: str
+    currency: str
     free_shipping: bool
-    condition: str 
-    marketplace_url: str 
-    source_type: str # image, text search
+    condition: str  # "new" | "used" | "refurbished" | "unknown"
+    availability: str  # verbatim availability text, e.g. "In Stock"
+    rating: Optional[float]
+    review_count: Optional[int]
+    brand: str
+    asin: str
+    marketplace_url: str
+    image_urls: List[str]
+    local_image_paths: List[str]
+    source_type: str  # "seed_url" | "image_search" | "text_search"
 
 
-class AgentStates(TypedDict):
-    initial_url: str # provided by user 
+class AgentState(TypedDict):
+    run_id: str
+    initial_url: str
+    target_listing: NormalizedListing
 
-    target_product_title: str 
-    target_product_description: str 
-    target_image_path: str 
+    queries: List[str]
+    urls_to_scrape: List[str]  # Queue of found competitor URLs (e.g., up to 10)
+    current_url: str  # The single URL being processed right now
 
-    execution_plan: List[Dict[str,Any]] # 1) find similar products: (function,parameters)
-
-    raw_search_resutls: List[Dict[str, Any]]# list of query: [result url1, result url2, result url 3]
-
-    normalized_listings: List[NormalizedListing]
-    validated_listings: List[NormalizedListing] # pass throuhgn like a fuynction latermfor validating
-
-    final_comparison_report: str 
-
-    error_count: int 
-    current_node: str 
+    normalized_listings: Annotated[List[NormalizedListing], operator.add]
+    validated_listings: List[NormalizedListing]
+    final_comparison_report: str
+    error_count: int
+    current_node: str
     next_node: Optional[str]
-
-    
