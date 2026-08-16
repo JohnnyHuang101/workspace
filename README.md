@@ -1,3 +1,6 @@
+<img width="7589" height="4192" alt="086_TensorTitans_Architecture" src="https://github.com/user-attachments/assets/5c8288cc-ec5a-427b-b276-dbc08025be16" />
+
+
 # 🛒 ShopSmart — Autonomous Multi-Agent Price Comparison & Deal Discovery Engine
 
 ShopSmart is a concurrent, multi-agent shopping and deal discovery engine built on **LangGraph**, **Python**, and **Playwright**. It orchestrates distributed web scraping, reverse image matching, and knowledge graph mapping to surface optimal cross-retailer deals based on real-time pricing, proximity logistics, and personalized user constraints.
